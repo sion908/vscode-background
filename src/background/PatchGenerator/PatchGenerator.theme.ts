@@ -1,10 +1,6 @@
-import { AbsPatchGenerator, css } from './PatchGenerator.base';
+import { css, WithoutImagesPatchGenerator } from './PatchGenerator.base';
 
-export class ThemePatchGenerator extends AbsPatchGenerator<any> {
-    constructor() {
-        super({ images: [] });
-    }
-
+export class ThemePatchGenerator extends WithoutImagesPatchGenerator {
     /**
      * 混合模式使用 css variable
      *
@@ -16,13 +12,13 @@ export class ThemePatchGenerator extends AbsPatchGenerator<any> {
     protected getStyle(): string {
         return css`
             // 浅色主题（默认）
-            :root {
+            body {
                 // 不使用混合模式
-                ${ThemePatchGenerator.cssMixBlendMode}: normal;
+                ${ThemePatchGenerator.cssMixBlendMode}: unset;
             }
 
-            // 深色主题 (覆盖)
-            :root:has(body > .monaco-workbench.vs-dark) {
+            // 深色主题 (覆盖)，避免使用 :root
+            body:has(> .monaco-workbench.vs-dark) {
                 // 使用混合模式
                 ${ThemePatchGenerator.cssMixBlendMode}: screen;
             }
