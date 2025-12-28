@@ -1,11 +1,17 @@
-## v2.0.7 (2025/11/19)
+## v2.0.8 (2025/12/28)
+
+- Perf/optimize rendering - 优化渲染模式 by @shalldie in (#573)[https://github.com/shalldie/vscode-background/pull/573]
+
+**Full Changelog**: https://github.com/shalldie/vscode-background/compare/v2.0.7...v2.0.8
+
+## v2.0.7 (2025/12/19)
 
 - Change automatic update to manual by @shalldie in [#569](https://github.com/shalldie/vscode-background/pull/569)
 - 自动更新替换为手动 by @shalldie in [#569](https://github.com/shalldie/vscode-background/pull/569)
 
 **Full Changelog**: https://github.com/shalldie/vscode-background/compare/v2.0.5...v2.0.7
 
-## v2.0.5 (2025/11/16)
+## v2.0.5 (2025/12/16)
 
 1. feat: Add blend mode to dark theme (#563) by @shalldie in [#566](https://github.com/shalldie/vscode-background/pull/566)
 2. fix: A more precise editor selector by @shalldie in [#530](https://github.com/shalldie/vscode-background/issues/530)
