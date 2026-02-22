@@ -34,7 +34,7 @@ export class FullscreenPatchGenerator<T extends FullscreenPatchGeneratorConfig> 
             body::after {
                 content: '';
                 display: block;
-                position: absolute;
+                position: fixed;
                 z-index: 1000;
                 inset: 0;
                 pointer-events: none;

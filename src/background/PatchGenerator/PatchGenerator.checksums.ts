@@ -47,12 +47,20 @@ export class ChecksumsPatchGenerator extends WithoutImagesPatchGenerator {
      * @memberof ChecksumsPatchGenerator
      */
     protected getStyle(): string {
-        return Translations.map(
-            trans => css`
-                .notification-toast-container:has([aria-label*='${trans}']) {
-                    display: none;
+        return Translations.map(trans => {
+            // NOTE: :has() は環境によって無効化されることがあるため使わない
+            // 通知の aria-label を含む要素が存在する toast を非表示にする
+            return css`
+                .notification-toast-container [aria-label*='${trans}'] {
+                    display: none !important;
                 }
-            `
-        ).join(' ');
+                .notification-toast-container [aria-label*='${trans}']
+                    .notification-toast,
+                .notification-toast-container [aria-label*='${trans}']
+                    .monaco-list-row {
+                    display: none !important;
+                }
+            `;
+        }).join(' ');
     }
 }

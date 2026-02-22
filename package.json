@@ -2,7 +2,7 @@
   "name": "background",
   "displayName": "background",
   "description": "Bring background images to your vscode",
-  "version": "2.0.10",
+  "version": "9.0.8",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "vscode:uninstall": "node ./out/uninstall",
@@ -12,12 +12,12 @@
     "package": "vsce package",
     "prepare": "husky"
   },
-  "publisher": "shalldie",
-  "author": "shalldie",
+  "publisher": "sion908",
+  "author": "sion908",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shalldie/vscode-background.git"
+    "url": "https://github.com/sion908/vscode-background.git"
   },
   "engines": {
     "vscode": "^1.94.0"
@@ -38,11 +38,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.background.info",
-        "category": "Background",
-        "title": "%extension.background.command.info.title%"
-      },
-      {
         "command": "extension.background.install",
         "category": "Background",
         "title": "%extension.background.command.install.title%"
@@ -56,11 +51,6 @@
         "command": "extension.background.uninstall",
         "category": "Background",
         "title": "%extension.background.command.uninstall.title%"
-      },
-      {
-        "command": "extension.background.previewPatch",
-        "category": "Background",
-        "title": "[Dev] Preview Patch"
       }
     ],
     "configuration": {
@@ -71,105 +61,6 @@
           "type": "boolean",
           "default": true,
           "markdownDescription": "%extension.background.enabled.description%"
-        },
-        "background.useFront": {
-          "type": "boolean",
-          "default": true,
-          "markdownDeprecationMessage": "%extension.background.common.deprecation%"
-        },
-        "background.style": {
-          "type": "object",
-          "default": {
-            "background-position": "100% 100%",
-            "background-size": "auto",
-            "opacity": 0.6
-          },
-          "markdownDeprecationMessage": "%extension.background.common.deprecation%"
-        },
-        "background.styles": {
-          "type": "array",
-          "default": [
-            {},
-            {},
-            {}
-          ],
-          "markdownDeprecationMessage": "%extension.background.common.deprecation%"
-        },
-        "background.customImages": {
-          "type": "array",
-          "default": [],
-          "items": {
-            "type": "string"
-          },
-          "markdownDeprecationMessage": "%extension.background.common.deprecation%"
-        },
-        "background.interval": {
-          "type": "number",
-          "default": 0,
-          "markdownDeprecationMessage": "%extension.background.common.deprecation%"
-        },
-        "background.editor": {
-          "type": "object",
-          "default": {
-            "useFront": true,
-            "style": {
-              "background-position": "100% 100%",
-              "background-size": "auto",
-              "opacity": 0.6
-            },
-            "styles": [
-              {},
-              {},
-              {}
-            ],
-            "images": [],
-            "interval": 0,
-            "random": false
-          },
-          "properties": {
-            "useFront": {
-              "type": "boolean",
-              "default": true,
-              "markdownDescription": "%extension.background.editor.useFront%"
-            },
-            "style": {
-              "type": "object",
-              "default": {
-                "background-position": "100% 100%",
-                "background-size": "auto",
-                "opacity": 0.6
-              },
-              "markdownDescription": "%extension.background.editor.style%"
-            },
-            "styles": {
-              "type": "array",
-              "default": [
-                {},
-                {},
-                {}
-              ],
-              "markdownDescription": "%extension.background.editor.styles%"
-            },
-            "images": {
-              "type": "array",
-              "default": [],
-              "items": {
-                "type": "string"
-              },
-              "markdownDescription": "%extension.background.editor.images%"
-            },
-            "interval": {
-              "type": "number",
-              "default": 0,
-              "markdownDescription": "%extension.background.editor.interval%"
-            },
-            "random": {
-              "type": "boolean",
-              "default": false,
-              "markdownDescription": "%extension.background.editor.random%"
-            }
-          },
-          "markdownDescription": "%extension.background.editor.description%"
         },
         "background.fullscreen": {
           "type": "object",
@@ -219,102 +110,6 @@
             }
           },
           "markdownDescription": "%extension.background.fullscreen.description%"
-        },
-        "background.sidebar": {
-          "type": "object",
-          "default": {
-            "images": [],
-            "opacity": 0.1,
-            "size": "cover",
-            "position": "center",
-            "interval": 0,
-            "random": false
-          },
-          "properties": {
-            "images": {
-              "$ref": "#/properties/background.fullscreen/properties/images"
-            },
-            "opacity": {
-              "$ref": "#/properties/background.fullscreen/properties/opacity"
-            },
-            "size": {
-              "$ref": "#/properties/background.fullscreen/properties/size"
-            },
-            "position": {
-              "$ref": "#/properties/background.fullscreen/properties/position"
-            },
-            "interval": {
-              "$ref": "#/properties/background.fullscreen/properties/interval"
-            },
-            "random": {
-              "$ref": "#/properties/background.fullscreen/properties/random"
-            }
-          },
-          "markdownDescription": "%extension.background.sidebar.description%"
-        },
-        "background.auxiliarybar": {
-          "type": "object",
-          "default": {
-            "images": [],
-            "opacity": 0.1,
-            "size": "cover",
-            "position": "center",
-            "interval": 0,
-            "random": false
-          },
-          "properties": {
-            "images": {
-              "$ref": "#/properties/background.fullscreen/properties/images"
-            },
-            "opacity": {
-              "$ref": "#/properties/background.fullscreen/properties/opacity"
-            },
-            "size": {
-              "$ref": "#/properties/background.fullscreen/properties/size"
-            },
-            "position": {
-              "$ref": "#/properties/background.fullscreen/properties/position"
-            },
-            "interval": {
-              "$ref": "#/properties/background.fullscreen/properties/interval"
-            },
-            "random": {
-              "$ref": "#/properties/background.fullscreen/properties/random"
-            }
-          },
-          "markdownDescription": "%extension.background.auxiliarybar.description%"
-        },
-        "background.panel": {
-          "type": "object",
-          "default": {
-            "images": [],
-            "opacity": 0.1,
-            "size": "cover",
-            "position": "center",
-            "interval": 0,
-            "random": false
-          },
-          "properties": {
-            "images": {
-              "$ref": "#/properties/background.fullscreen/properties/images"
-            },
-            "opacity": {
-              "$ref": "#/properties/background.fullscreen/properties/opacity"
-            },
-            "size": {
-              "$ref": "#/properties/background.fullscreen/properties/size"
-            },
-            "position": {
-              "$ref": "#/properties/background.fullscreen/properties/position"
-            },
-            "interval": {
-              "$ref": "#/properties/background.fullscreen/properties/interval"
-            },
-            "random": {
-              "$ref": "#/properties/background.fullscreen/properties/random"
-            }
-          },
-          "markdownDescription": "%extension.background.panel.description%"
         }
       }
     }

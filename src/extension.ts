@@ -6,21 +6,6 @@ import { Background } from './background';
 import { EXTENSION_ID } from './utils/constants';
 import { vsHelp } from './utils/vsHelp';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-
-function getStatusbar() {
-    const item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
-
-    item.command = 'extension.background.showAllCommands';
-    item.name = 'Background';
-    item.text = '$(file-media) Background';
-    item.tooltip = new vscode.MarkdownString(l10n.t('Show `background` commands'));
-    item.show();
-
-    return item;
-}
-
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     const background = new Background();
 
@@ -29,12 +14,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     if (ok === false) {
         return;
     }
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand('extension.background.info', function () {
-            background.showWelcome();
-        })
-    );
 
     context.subscriptions.push(
         vscode.commands.registerCommand('extension.background.install', async () => {
@@ -61,20 +40,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             });
         })
     );
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand('extension.background.previewPatch', async () => {
-            background.previewPatch();
-        })
-    );
-
-    const statusbar = getStatusbar();
-    context.subscriptions.push(
-        vscode.commands.registerCommand(statusbar.command as string, async () => {
-            vscode.commands.executeCommand('workbench.action.quickOpen', '> background: ');
-        })
-    );
-    context.subscriptions.push(statusbar);
 }
 
 // this method is called when your extension is deactivated

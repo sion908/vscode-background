@@ -165,11 +165,6 @@ export class Background implements Disposable {
         return this.jsFile.applyPatches(scriptContent);
     }
 
-    public previewPatch() {
-        const scriptContent = PatchGenerator.create(this.config);
-        vsHelp.showMarkdown('```ts\n' + scriptContent + '\n```', 'preview-patch');
-    }
-
     // #endregion
 
     // #region public methods
@@ -191,7 +186,6 @@ export class Background implements Disposable {
         // 此时一般为 「background更新」、「vscode更新」
         const needApply = [EFilePatchType.Legacy, EFilePatchType.None].includes(patchType);
         if (this.config.enabled && needApply) {
-            // 提示
             vscode.window
                 .showInformationMessage(
                     l10n.t('Background@{version} is ready! Apply to take effect.', { version: VERSION }),
@@ -201,10 +195,6 @@ export class Background implements Disposable {
                             await this.applyPatch();
                             await vsHelp.reload();
                         }
-                    },
-                    {
-                        title: l10n.t('More'),
-                        action: () => this.showWelcome()
                     }
                 )
                 .then(confirm => {

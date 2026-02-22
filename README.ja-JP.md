@@ -1,7 +1,7 @@
 <!-- 中英文切换 -->
 <div align="right">
 
-[English](./README.md) | [中文](./README.zh-CN.md) | **日本語**
+[English](./README.md) | **日本語**
 
 </div>
 <!-- 中英文切换 end -->
@@ -15,9 +15,9 @@
 
 ### [Visual Studio Code](https://code.visualstudio.com) にも背景画像を。
 
-`フルスクリーン`、`エディター`、`サイドバー`、`補助バー(auxiliarybar)`、`パネル`、`画像の切り替わり`、`画像・CSSのカスタマイズ`...
+`フルスクリーン`
 
-[GitHub](https://github.com/shalldie/vscode-background) | [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=shalldie.background)
+[GitHub](https://github.com/sion908/vscode-background)
 
 [![Version](https://img.shields.io/visual-studio-marketplace/v/shalldie.background?logo=visualstudiocode&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=shalldie.background)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/shalldie.background?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=shalldie.background)
@@ -25,10 +25,6 @@
 [![Stars](https://img.shields.io/github/stars/shalldie/vscode-background?logo=github&style=flat-square)](https://github.com/shalldie/vscode-background)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/shalldie/vscode-background/ci.yml?branch=master&label=build&style=flat-square)](https://github.com/shalldie/vscode-background/actions)
 [![License](https://img.shields.io/github/license/shalldie/vscode-background?style=flat-square)](https://github.com/shalldie/vscode-background)
-
-複数の領域、`エディタ`、`サイドバー`、`補助バー(auxiliarybar)`、`パネル`
-
-<img width="760" src="./images/section.png">
 
 `フルスクリーン`
 
@@ -61,56 +57,9 @@
 | :------------------- | :-------: | :--------: | :----------------------------------------- |
 | `background.enabled` | `Boolean` |   `true`   | 拡張機能を有効化するかどうかを制御します。 |
 
-### エディタ部分の設定
+### フルスクリーン設定
 
-エディタ部分の設定を行うには、`background.editor`を編集します．
-
-| 設定       |     型     |  デフォルト  | 説明                                                                        |
-| :--------- | :--------: | :----------: | :-------------------------------------------------------------------------- |
-| `useFront` | `boolean`  |    `true`    | 画像を最前面に表示するかどうかを制御します。                                |
-| `style`    |  `object`  |     `{}`     | 全ての画像に適応される CSS を制御します。 [MDN Reference][mdn-css]          |
-| `styles`   | `object[]` | `[{},{},{}]` | 個別の画像に適応される CSS を制御します。                                   |
-| `images`   | `string[]` |     `[]`     | カスタム画像に対応、オンライン画像やローカル画像、フォルダもサポート。      |
-| `interval` |  `number`  |     `0`      | 次の画像を表示するまでの秒数を制御します。`0`の場合、画像は変更されません。 |
-| `random`   | `boolean`  |   `false`    | 画像の表示順をランダムにするかを制御します。                                |
-
-[mdn-css]: https://developer.mozilla.org/docs/Web/CSS
-
-設定例：
-
-```json
-{
-  "background.editor": {
-    "useFront": true,
-    "style": {
-      "background-position": "100% 100%",
-      "background-size": "auto",
-      "opacity": 0.6
-    },
-    "styles": [{}, {}, {}],
-    // `images`はオンライン画像、ローカル画像、およびフォルダをサポートしています。
-    "images": [
-      // オンライン画像については、`https`のみ許可されています。
-      "https://hostname/online.jpg",
-      // ローカル画像
-      "file:///local/path/img.jpeg",
-      "/home/xie/downloads/img.gif",
-      "C:/Users/xie/img.bmp",
-      "D:\\downloads\\images\\img.webp",
-      // ローカルフォルダ
-      "/home/xie/images",
-      // data URL
-      "data:image/*;base64,<base64-data>"
-    ],
-    "interval": 0,
-    "random": false
-  }
-}
-```
-
-### フルスクリーン、サイドバー、補助バー(auxiliarybar)、パネル部分の設定
-
-`background.fullscreen`、`background.sidebar`、`background.auxiliarybar`、`background.panel`を編集してこれらの領域を設定します。
+`background.fullscreen` を編集してフルスクリーン背景を設定します。
 
 | 設定       |     型     | デフォルト | 説明                                                                                                       |
 | :--------- | :--------: | :--------: | :--------------------------------------------------------------------------------------------------------- |
@@ -149,18 +98,9 @@ example:
     "position": "center",
     "interval": 0,
     "random": false
-  },
-  // `sidebar`、`panel`も、`fullscreen`と同様の設定項目を持っています
-  "background.sidebar": {},
-  "background.panel": {}
+  }
 }
 ```
-
-## クイックコマンド
-
-ステータスバーの右下にある「background」をクリックすると、`background`のすべてのコマンドが表示されます：
-
-<img width="660" src="./images/commands.png">
 
 ## 注意点
 

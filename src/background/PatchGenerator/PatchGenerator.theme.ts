@@ -17,9 +17,9 @@ export class ThemePatchGenerator extends WithoutImagesPatchGenerator {
                 ${ThemePatchGenerator.cssMixBlendMode}: unset;
             }
 
-            // 深色主题 (覆盖)，避免使用 :root
-            body:has(> .monaco-workbench.vs-dark) {
-                // 使用混合模式
+            // 深色主题 (覆盖)
+            // NOTE: :has() は環境によって無効化されることがあるため使わない
+            .monaco-workbench.vs-dark {
                 ${ThemePatchGenerator.cssMixBlendMode}: screen;
             }
         `;
